@@ -7,13 +7,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     private EditText textoEuros;
     private TextView textoLibras;
     private Button button;
-    private final float CONVERSION = 1.21f;
+    private final float CONVERSION = 0.86f;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,13 +24,15 @@ public class MainActivity extends AppCompatActivity {
         textoLibras = (TextView) findViewById(R.id.textViewLibras);
         textoEuros = (EditText) findViewById(R.id.editTextEuros);
 
-        Log.d("CONVERSOR","APP RUNNING");
+        Log.d("CONVERSOR", "APP RUNNING");
     }
 
     public void convertirDivisa(View view) {
+        Toast.makeText(this, "Trying to convert", Toast.LENGTH_SHORT).show();
         float divisa = Float.parseFloat(textoEuros.getText().toString());
         float divisaConvertida = divisa * CONVERSION;
-        textoLibras.setText(String.valueOf(divisaConvertida) + "£");
+        String finalText = String.valueOf(divisaConvertida) + "£";
+        textoLibras.setText(finalText);
 
 
     }
